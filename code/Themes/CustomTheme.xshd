@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxDefinition name="CustomC#" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+    <!-- ========================================== -->
+    <!-- COLOR PALETTE DEFINITION                   -->
+    <!-- ========================================== -->
+    
+    <!-- Comments: Green -->
+    <Color name="Comment" foreground="#4CAF50" fontStyle="italic" />
+    
+    <!-- Strings: Light Coral / Orange -->
+    <Color name="String" foreground="#CE9178" />
+    
+    <!-- Control Flow & Directives (using, if, for, foreach, while, etc.): Purple -->
+    <Color name="ControlFlow" foreground="#C586C0" fontWeight="bold" />
+    
+    <!-- Language Keywords (public, private, static, return, etc.): Yellow -->
+    <Color name="Keywords" foreground="#E5C07B" fontWeight="bold" />
+    
+    <!-- Declaring Types (void, int, string, bool, var, etc.): Darker Blue -->
+    <Color name="DeclaringTypes" foreground="#2E86DE" fontWeight="bold" />
+    
+    <!-- Variables, Instances, Namespaces & Methods: Light Blue -->
+    <Color name="IdentifiersAndMethods" foreground="#9CDCFE" />
+    
+    <!-- Numbers: Pale orange -->
+    <Color name="Number" foreground="#EDFF8C00" />
+
+    <!-- ========================================== -->
+    <!-- SYNTAX RULES                               -->
+    <!-- ========================================== -->
+    <RuleSet>
+        <!-- 1. Comments: Green -->
+        <Span color="Comment" begin="//" />
+        <Span color="Comment" multiline="true" begin="/\*" end="\*/" />
+
+        <!-- 2. Strings -->
+        <Span color="String">
+            <Begin>"</Begin>
+            <End>"</End>
+            <RuleSet>
+                <Span begin="\\\\" />
+                <Span begin="\\&quot;" />
+            </RuleSet>
+        </Span>
+
+        <Span color="String">
+            <Begin>'</Begin>
+            <End>'</End>
+        </Span>
+
+        <!-- Verbatim string @"..." -->
+        <Span color="String" multiline="true">
+            <Begin>@"</Begin>
+            <End>"</End>
+            <RuleSet>
+                <Span begin="&quot;&quot;" />
+            </RuleSet>
+        </Span>
+
+        <!-- Interpolated string $"..." -->
+        <Span color="String">
+            <Begin>\$"</Begin>
+            <End>"</End>
+        </Span>
+
+        <!-- 3. Numbers -->
+        <Rule color="Number">
+            \b0[xX][0-9a-fA-F]+|(\b\d+(\.[0-9]+)?|\.[0-9]+)([eE][+-]?[0-9]+)?\b
+        </Rule>
+
+        <!-- 4. Control Flow & Directives: PURPLE (using, if, loops, etc.) -->
+        <Keywords color="ControlFlow">
+            <Word>using</Word>
+            <Word>if</Word>
+            <Word>else</Word>
+            <Word>for</Word>
+            <Word>foreach</Word>
+            <Word>while</Word>
+            <Word>do</Word>
+            <Word>switch</Word>
+            <Word>case</Word>
+            <Word>default</Word>
+            <Word>break</Word>
+            <Word>continue</Word>
+            <Word>goto</Word>
+            <Word>try</Word>
+            <Word>catch</Word>
+            <Word>finally</Word>
+            <Word>throw</Word>
+            <Word>yield</Word>
+        </Keywords>
+
+        <!-- 5. Keywords: YELLOW (public, private, static, return, etc.) -->
+        <Keywords color="Keywords">
+            <Word>public</Word>
+            <Word>private</Word>
+            <Word>protected</Word>
+            <Word>internal</Word>
+            <Word>static</Word>
+            <Word>return</Word>
+            <Word>class</Word>
+            <Word>namespace</Word>
+            <Word>new</Word>
+            <Word>this</Word>
+            <Word>base</Word>
+            <Word>override</Word>
+            <Word>virtual</Word>
+            <Word>abstract</Word>
+            <Word>sealed</Word>
+            <Word>async</Word>
+            <Word>await</Word>
+            <Word>readonly</Word>
+            <Word>const</Word>
+            <Word>params</Word>
+            <Word>ref</Word>
+            <Word>out</Word>
+            <Word>is</Word>
+            <Word>as</Word>
+            <Word>sizeof</Word>
+            <Word>typeof</Word>
+            <Word>nameof</Word>
+            <Word>checked</Word>
+            <Word>unchecked</Word>
+            <Word>unsafe</Word>
+            <Word>fixed</Word>
+            <Word>lock</Word>
+            <Word>get</Word>
+            <Word>set</Word>
+            <Word>init</Word>
+            <Word>value</Word>
+            <Word>record</Word>
+            <Word>struct</Word>
+            <Word>interface</Word>
+            <Word>enum</Word>
+            <Word>delegate</Word>
+            <Word>event</Word>
+            <Word>true</Word>
+            <Word>false</Word>
+            <Word>null</Word>
+        </Keywords>
+
+        <!-- 6. Declaring Types: DARKER BLUE (void, int, string, var, bool, etc.) -->
+        <Keywords color="DeclaringTypes">
+            <Word>void</Word>
+            <Word>var</Word>
+            <Word>string</Word>
+            <Word>int</Word>
+            <Word>bool</Word>
+            <Word>char</Word>
+            <Word>double</Word>
+            <Word>float</Word>
+            <Word>decimal</Word>
+            <Word>long</Word>
+            <Word>short</Word>
+            <Word>byte</Word>
+            <Word>sbyte</Word>
+            <Word>uint</Word>
+            <Word>ulong</Word>
+            <Word>ushort</Word>
+            <Word>object</Word>
+            <Word>dynamic</Word>
+            <Word>nint</Word>
+            <Word>nuint</Word>
+            <Word>Task</Word>
+        </Keywords>
+
+        <!-- 7. Method Names & Calls: LIGHT BLUE -->
+        <Rule color="IdentifiersAndMethods">
+            \b[\d\w_]+(?=\s*\()
+        </Rule>
+
+        <!-- 8. Variable Names, Instance Names, Namespaces & Identifiers: LIGHT BLUE -->
+        <Rule color="IdentifiersAndMethods">
+            \b[a-zA-Z_][a-zA-Z0-9_]*\b
+        </Rule>
+    </RuleSet>
+</SyntaxDefinition>

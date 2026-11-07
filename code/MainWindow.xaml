@@ -1,0 +1,38 @@
+﻿<Window x:Class="TextEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextEditor"
+        mc:Ignorable="d"
+        Title="TextEditor" Height="800" Width="1400" ResizeMode="NoResize">
+    <Grid>
+        <Rectangle HorizontalAlignment="Center" Height="36" Stroke="Black" Fill="Yellow" VerticalAlignment="Top" Width="1400"/>
+        <Button Click="OpenTextEditorClick" Content="Open text editor" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top"/>
+        <Button Click="OpenManageSavedFilesClick" Content="Manage saved files" HorizontalAlignment="Left" Margin="106,8,0,0" VerticalAlignment="Top"/>
+
+        <Grid Name="TextEditorTab" Visibility="Collapsed">
+            <Rectangle HorizontalAlignment="Center" Height="40" Stroke="Black" Fill="LightYellow" VerticalAlignment="Top" Width="1401" Margin="0,36,0,0"/>
+            <TextBox Name="FilePathTextBox" FontSize="14" HorizontalAlignment="Left" Margin="0,36,0,0" TextWrapping="Wrap" Text="File path to file" VerticalAlignment="Top" Width="371" Height="33"/>
+            <TextBox Name="FileNameTextBox" HorizontalAlignment="Left" FontSize="12" Margin="405,36,0,0" TextWrapping="Wrap" Text="SaveFileName.cs or .cpp etc" VerticalAlignment="Top" Width="195" Height="33"/>
+            <Button Click="OpenCsFileClick" Content="Open" HorizontalAlignment="Left" Margin="371,36,0,0" VerticalAlignment="Top" Height="33" Width="34"/>
+            <Button Click="SaveFilePath" Content="Save file path" HorizontalAlignment="Left" Margin="600,36,0,0" VerticalAlignment="Top" Height="33" Width="75"/>
+
+
+            <avalonEdit:TextEditor 
+             x:Name="CodeEditor"
+             Margin="0,76,0,0"
+             FontFamily="Consolas"
+             FontSize="14pt"
+             ShowLineNumbers="True"
+             Background="Black"
+                Foreground="White"
+             SyntaxHighlighting="" />
+            <TextBox Name="OpenSavedFileTextBox" HorizontalAlignment="Left" Margin="675,36,0,0" TextWrapping="Wrap" Text="Saved File Path Name" VerticalAlignment="Top" Width="125" Height="33" />
+            <Button Click="OpenSavedFileClick" Content="Open" HorizontalAlignment="Left" Margin="799,36,0,0" VerticalAlignment="Top" Height="33" Width="33"/>
+
+        </Grid>
+
+    </Grid>
+</Window>
